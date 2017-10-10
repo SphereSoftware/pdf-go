@@ -17,9 +17,9 @@ TRANSLATOR:
   Rules: 
     global: 
       - {transform: lower}
-      - {action: accept, from: "fz_"}
+      - {action: accept, from: "(?i)fz_"}
       - {action: replace, from: "fz_", to: _}
-      - {action: accept, from: "pdf_"}
+      - {action: accept, from: "(?i)pdf_"}
       - {action: replace, from: "pdf_", to: _}
       - {transform: export}
     const:
