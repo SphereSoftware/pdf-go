@@ -6,8 +6,8 @@ GENERATOR:
   Includes: [mupdf/pdf.h, mupdf/fitz.h]
 
 PARSER: 
-  IncludePaths: [/usr/include]
-  SourcesPaths: [mupdf/mupdf.h, mupdf/fitz.h]
+  IncludePaths: [/usr/include, compat]
+  SourcesPaths: [mupdf/pdf.h, mupdf/fitz.h]
 
 TRANSLATOR: 
   PtrTips:
@@ -17,11 +17,13 @@ TRANSLATOR:
   Rules: 
     global: 
       - {transform: lower}
-      - {action: accept, from: "(?i)fz_"}
+      - {action: accept, from: "fz_"}
       - {action: replace, from: "fz_", to: _}
-      - {action: accept, from: "(?i)pdf_"}
+      - {action: accept, from: "pdf_"}
       - {action: replace, from: "pdf_", to: _}
       - {transform: export}
+    const:
+      - {action: ignore, from: ^PDF_OBJ}
     type: 
       - {action: replace, from: "_t$"}
     private:
